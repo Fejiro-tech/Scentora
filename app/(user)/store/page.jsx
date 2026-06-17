@@ -33,16 +33,16 @@ const Page = () => {
           Back
         </button>
         <div className="flex justify-between items-center mb-12">
-          <h1 className="text-3xl capitalize font-medium text-[rgba(200,160,100,0.8)]">
+          <h1 className="text-lg capitalize font-medium text-[rgba(200,160,100,0.8)]">
             {selectedFilter} Perfumes
           </h1>
 
-          <div className="flex gap-4 flex-wrap justify-center">
+          <div className="flex gap-2 md:gap-4 flex-wrap justify-center">
             {filters.map((filter) => (
               <button
                 key={filter}
                 onClick={() => setSelectedFilter(filter)}
-                className={`px-4 py-1 border rounded-full capitalize transition ${
+                className={`px-4 py-1 border rounded-full text-xs md:text-sm capitalize transition ${
                   selectedFilter === filter
                     ? "bg-black text-[rgba(220,185,145,0.95)] scale-105"
                     : "bg-transparent text-black"

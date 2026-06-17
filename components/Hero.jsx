@@ -76,7 +76,7 @@ const Hero = () => {
       </span>
 
       {/* MAIN CONTENT */}
-      <div className="relative z-10 flex justify-center min-h-[80vh] px-5 sm:px-8 md:px-10 lg:px-16">
+      <div className="relative z-10 flex justify-center min-h-[80vh] px-6 sm:px-8 md:px-10 lg:px-16 pt-16">
 
         {/* Text Content */}
         <div className="flex flex-col justify-center pt-2 sm:pt-32 lg:pt-20 pb-12 lg:pb-0 max-w-130">

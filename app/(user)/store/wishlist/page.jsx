@@ -14,7 +14,7 @@ const WishlistPage = () => {
 
         {/* HEADER */}
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold font-['Cormorant_Garamond'] tracking-[3px] text-[#1A1A1A]">
+          <h1 className="text-2xl md:text-4xl font-bold font-['Cormorant_Garamond'] tracking-[3px] text-[#1A1A1A]">
             My Wishlist
           </h1>
           <p className="text-gray-600 text-sm mt-2">
@@ -37,7 +37,7 @@ const WishlistPage = () => {
           </div>
         ) : (
           /* GRID */
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6 md:px-0">
 
             {wishlist.map((item) => (
               <div

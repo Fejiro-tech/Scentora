@@ -32,18 +32,18 @@ const PerfumeDetail = ({ product }) => {
           </div>
 
           {/* Details Section */}
-          <div className="p-10 flex flex-col justify-center">
-            <h1 className="text-3xl font-bold text-gray-900">{product.name}</h1>
+          <div className="p-6 md:p-10 flex flex-col justify-center">
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">{product.name}</h1>
 
             <p className="text-sm text-gray-500 mt-1 capitalize">
               {product.category}
             </p>
 
-            <p className="text-2xl font-semibold text-black mt-6">
+            <p className="text-lg md:text-xl lg:text-2xl font-semibold text-black mt-4 md:mt-6">
               ₦{product.price}
             </p>
 
-            <p className="text-gray-600 mt-6 leading-relaxed">
+            <p className="text-gray-600 text-sm md:text-base mt-4 md:mt-6 leading-relaxed">
               {product.description}
             </p>
 
@@ -51,12 +51,12 @@ const PerfumeDetail = ({ product }) => {
             <div className="mt-8 flex gap-4">
               <button
                 onClick={() => addToCart(product)}
-                className="px-6 py-3 bg-black text-white rounded-full hover:scale-105 transition"
+                className="px-6 py-3 bg-black text-white text-xs md:text-base rounded-full hover:scale-105 transition "
               >
                 Add to Cart
               </button>
 
-              <button className="px-6 py-3 border border-black text-black rounded-full hover:bg-black hover:text-white transition">
+              <button className="px-6 py-3 border border-black text-black text-xs md:text-base rounded-full hover:bg-black hover:text-white transition">
                 Buy Now
               </button>
             </div>
