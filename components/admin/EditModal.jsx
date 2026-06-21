@@ -58,17 +58,6 @@ export default function EditModal({ onClose, selectedProduct, editProduct }) {
     }
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   editProduct({
-  //     ...form,
-  //     id: selectedProduct.id,
-  //   });
-
-  //   onClose();
-  // };
-
   const handleSubmit = (e) => {
   e.preventDefault();
 
@@ -117,7 +106,7 @@ export default function EditModal({ onClose, selectedProduct, editProduct }) {
                   alt="preview"
                   width={300}
                   height={300}
-                  className="w-44 h-44 object-cover"
+                  className="w-24 h-24 md:w-44 md:h-44 object-cover"
                 />
               ) : (
                 <>
