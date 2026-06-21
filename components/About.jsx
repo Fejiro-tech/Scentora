@@ -32,7 +32,7 @@ const About = () => {
       className="w-full bg-[#F7F3EE] px-8 py-20"
       id="about"
     >
-      <div className="max-w-5xl mx-auto text-center">
+      <div className="max-w-5xl mx-auto text-center py-14">
 
         {/* Title */}
         <motion.h2

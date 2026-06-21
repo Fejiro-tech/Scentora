@@ -112,6 +112,7 @@ const Navbar = () => {
         {navlinks.map((item, idx) => (
           <Link
             href={item.href}
+            onClick={() => setIsOpen(false)}
             key={idx}
             className="uppercase tracking-[3px] text-sm md:text-base font-bold text-[rgba(245,239,230,0.85)] hover:text-[rgba(200,160,100,0.8)] transition cursor-pointer"
           >

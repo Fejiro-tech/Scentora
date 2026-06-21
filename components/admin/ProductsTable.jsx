@@ -177,6 +177,30 @@ const ProductsTable = ({ products, showActions = true }) => {
             >
               {product.isBestSeller ? "Best Seller" : "Normal"}
             </button>
+
+             {/* ACTIONS */}
+              {showActions && (
+                <div className="flex justify-between gap-2 text-sm mt-8">
+                  <button
+                    onClick={() => openEditModal(product)}
+                    className="text-blue-600 bg-blue-200 px-3 rounded"
+                  >
+                    Edit
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      console.log("PRODUCT:", product);
+                      console.log("ID:", product.id);
+
+                      deleteProduct(product.id);
+                    }}
+                    className="text-red-500 bg-red-200 px-3 rounded"
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
           </div>
         ))}
       </div>

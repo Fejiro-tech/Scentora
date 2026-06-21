@@ -9,7 +9,7 @@ const page = () => {
   const { products } = useProduct();
 
   return (
-    <div className=" min-h-screen text-black px-10 py-">
+    <div className=" min-h-screen text-black px-10 py-4">
       <div className="max-w-6xl mx-auto text-center pt-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         

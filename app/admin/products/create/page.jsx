@@ -103,7 +103,7 @@ const Page = () => {
   };
 
   return (
-    <div className="min-h-screen w-full text-black">
+    <div className="min-h-screen w-full text-black py-10">
       <div className="max-w-4xl mx-auto">
         <CreateProducts
           formData={formData}

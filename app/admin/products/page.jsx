@@ -18,7 +18,7 @@ const Page = () => {
   // const [deleteId, setDeleteId] = useState(null);
 
   return (
-    <div className="min-h-screen text-gray-900">
+    <div className="min-h-screen text-gray-900 px-4 py-10">
       <div className="max-w-6xl mx-auto">
         <ProductsTable products={products} showActions={true} />
 
