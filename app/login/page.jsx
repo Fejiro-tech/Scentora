@@ -33,7 +33,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black px-4">
+    <div className="min-h-screen flex items-center justify-center bg-black px-6">
       <div className="relative w-full max-w-md p-8 rounded-2xl border border-yellow-500/30 bg-zinc-950 shadow-[0_0_40px_rgba(234,179,8,0.15)] font-['Cormorant_Garamond']">
 
         {/* Header */}
