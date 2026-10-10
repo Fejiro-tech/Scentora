@@ -1,7 +1,6 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { mapProductFromDB, mapProductToDB } from "../utils/productMapper";
 
 export const ProductContext = createContext();

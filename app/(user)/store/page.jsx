@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import PerfumeCard from "../../../components/PerfumeCard";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { useProduct } from "../../context/ProductContext";
@@ -13,13 +12,21 @@ const Page = () => {
   const { products } = useProduct();
 
   const [selectedFilter, setSelectedFilter] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const filters = ["all", "floral", "woody"];
+  const formatSearchTerm = searchTerm.trim().toLowerCase();
 
-  const filteredProducts =
-    selectedFilter === "all"
-      ? products
-      : products.filter((p) => p.category?.toLowerCase() === selectedFilter);
+  const filteredProducts = products.filter((product) => {
+    const matchesCategory =
+      selectedFilter === "all" ||
+      product.category?.toLowerCase() === selectedFilter;
+    const matchesSearch = product.name
+      ?.toLowerCase()
+      .includes(formatSearchTerm);
+
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <section className="w-full bg-[#F7F3EE] px-6 py-20">
@@ -32,6 +39,16 @@ const Page = () => {
           <ArrowLeft size={18} />
           Back
         </button>
+        <div className="mb-8 flex justify-center">
+          <input
+            type="search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search perfumes..."
+            aria-label="Search perfumes"
+            className="w-full max-w-md rounded-full border border-gray-300 px-4 py-3 text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[rgba(200,160,100,0.8)]"
+          />
+        </div>
         <div className="flex justify-between items-center mb-12">
           <h1 className="text-lg capitalize font-medium text-[rgba(200,160,100,0.8)]">
             {selectedFilter} Perfumes
@@ -62,7 +79,8 @@ const Page = () => {
             ))
           ) : (
             <p className="col-span-full text-gray-500">
-              No perfumes found in this filter.
+              No perfumes match your search and selected category. Try another
+              name or category.
             </p>
           )}
         </div>
