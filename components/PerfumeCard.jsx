@@ -51,7 +51,7 @@ const PerfumeCard = ({ product }) => {
             </span>
           )}
 
-          {/* ❤️ flying heart */}
+          {/* fying heart */}
           {flyHeart && (
             <motion.div
               initial={{ opacity: 1, scale: 1, y: 0 }}
