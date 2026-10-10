@@ -46,7 +46,7 @@ const Page = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search perfumes..."
             aria-label="Search perfumes"
-            className="w-full max-w-md rounded-full border border-gray-300 px-4 py-3 text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[rgba(200,160,100,0.8)]"
+            className="w-full max-w-md rounded-full border border-gray-300 px-4 py-3 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[rgba(200,160,100,0.8)]"
           />
         </div>
         <div className="flex justify-between items-center mb-12">
