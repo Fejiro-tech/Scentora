@@ -1,4 +1,5 @@
 import { useCart } from "../app/context/CartContext";
+import Link from "next/link";
 
 export default function Cart() {
 
@@ -109,12 +110,12 @@ export default function Cart() {
               Proceed to Checkout
             </button>
 
-            <button
-              onClick={() => router.push("/store")}
-              className="w-full border border-white/40 rounded-full py-2.5 mt-4 hover:bg-white/5 transition"
+            <Link
+              href="/store"
+              className="block w-full text-center border border-white/40 rounded-full py-2.5 mt-4 hover:bg-white/5 transition"
             >
               Continue Shopping
-            </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -41,7 +41,6 @@ const About = () => {
         >
           About Our Perfume Store
         </motion.h2>
-
         <motion.p
           variants={item}
           className="text-gray-600 mt-4 max-w-lg md:max-w-2xl text-sm md:text-base mx-auto leading-relaxed"
