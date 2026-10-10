@@ -2,17 +2,14 @@
 import ProductsTable from "../../../components/admin/ProductsTable";
 import EditModal from "../../../components/admin/EditModal";
 import { useProduct } from "../../context/ProductContext";
-import { useEffect, useState } from "react";
 
 const Page = () => {
   const {
     products,
-    setProducts,
     isEditOpen,
     closeEditModal,
     editProduct,
     selectedProduct,
-    fetchProducts,
   } = useProduct();
 
   // const [deleteId, setDeleteId] = useState(null);

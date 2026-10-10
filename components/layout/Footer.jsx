@@ -10,14 +10,14 @@ const Footer = () => {
       {/* Glass Background */}
       <div className="backdrop-blur-xl bg-[#0F0505] border-t border-white/10 text-white ">
 
-        <div className="max-w-360 mx-auto px-6 sm:px-8 lg:px-10 py-10 font-['Cormorant_Garamond']">
+        <div className="max-w-360 mx-auto px-6 sm:px-8 lg:px-10 py-10">
 
           {/* Top Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
 
             {/* Brand */}
             <div>
-              <h2 className="text-2xl font-semibold tracking-wide">
+              <h2 className="font-display text-2xl font-semibold tracking-wide">
                 Scentora
               </h2>
               <p className="text-white/60 mt-4 text-sm leading-relaxed">
@@ -28,7 +28,7 @@ const Footer = () => {
 
             {/* Links */}
             <div>
-              <h3 className="text-lg font-medium mb-4">Explore</h3>
+              <h3 className="font-display text-lg font-medium mb-4">Explore</h3>
               <ul className="space-y-2 text-white/60 text-sm">
                 <li><Link href="/" className="hover:text-white transition">Home</Link></li>
                 <li><Link href="/store" className="hover:text-white transition">Shop</Link></li>
@@ -39,7 +39,7 @@ const Footer = () => {
 
             {/* Social */}
             <div>
-              <h3 className="text-lg font-medium mb-4">Connect</h3>
+              <h3 className="font-display text-lg font-medium mb-4">Connect</h3>
               <ul className="space-y-2 text-white/60 text-sm">
                 <li><a href="#" className="hover:text-white transition">Instagram</a></li>
                 <li><a href="#" className="hover:text-white transition">TikTok</a></li>

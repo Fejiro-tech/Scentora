@@ -37,7 +37,7 @@ const About = () => {
         {/* Title */}
         <motion.h2
           variants={item}
-          className="text-2xl lg:text-4xl font-semibold text-black font-['Cormorant_Garamond']"
+          className="font-display text-2xl lg:text-4xl font-semibold text-black"
         >
           About Our Perfume Store
         </motion.h2>
@@ -45,7 +45,7 @@ const About = () => {
           variants={item}
           className="text-gray-600 mt-4 max-w-lg md:max-w-2xl text-sm md:text-base mx-auto leading-relaxed"
         >
-          We believe fragrance is more than a scent — it's identity, memory, and emotion.
+          We believe fragrance is more than a scent — it&apos;s identity, memory, and emotion.
           Our collection is carefully curated to bring you luxurious perfumes that define elegance
           and personality.
         </motion.p>
@@ -59,7 +59,7 @@ const About = () => {
             variants={item}
             className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition"
           >
-            <h3 className="text-lg font-semibold text-black font-['Cormorant_Garamond']">
+            <h3 className="font-display text-lg font-semibold text-black">
               Premium Quality
             </h3>
             <p className="text-gray-600 mt-2 text-sm">
@@ -71,7 +71,7 @@ const About = () => {
             variants={item}
             className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition"
           >
-            <h3 className="text-lg font-semibold text-black font-['Cormorant_Garamond']">
+            <h3 className="font-display text-lg font-semibold text-black">
               Unique Scents
             </h3>
             <p className="text-gray-600 mt-2 text-sm">
@@ -83,7 +83,7 @@ const About = () => {
             variants={item}
             className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition"
           >
-            <h3 className="text-lg font-semibold text-black font-['Cormorant_Garamond']">
+            <h3 className="font-display text-lg font-semibold text-black">
               Fast Delivery
             </h3>
             <p className="text-gray-600 mt-2 text-sm">

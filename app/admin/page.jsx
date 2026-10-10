@@ -1,11 +1,11 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import DashboardCard from "../../components/admin/DashboardCard";
 import ProductsTable from "../../components/admin/ProductsTable";
 
 import { useProduct } from "../context/ProductContext";
 
-const page = () => {
+const AdminPage = () => {
   const { products } = useProduct();
 
   return (
@@ -27,4 +27,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default AdminPage;

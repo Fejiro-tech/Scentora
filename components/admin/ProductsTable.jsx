@@ -42,12 +42,12 @@ const ProductsTable = ({ products, showActions = true }) => {
                 alt={product.name}
                 width={40}
                 height={40}
-                className="w-10 h-10 rounded-md object-cover"
+                className="w-10 h-10 rounded-md bg-[#F8F4EE] object-contain"
               />
 
               <p className="text-sm">{product.name}</p>
               <p className="text-sm text-gray-600">{product.category}</p>
-              <p className="text-sm">₦{product.price}</p>
+              <p className="text-sm">₦{Number(product.price).toLocaleString("en-NG")}</p>
 
               {/* STOCK */}
               <p className="text-sm">
@@ -131,7 +131,7 @@ const ProductsTable = ({ products, showActions = true }) => {
                 alt={product.name}
                 width={40}
                 height={40}
-                className="w-14 h-14 rounded-xl object-cover"
+                className="w-14 h-14 rounded-xl bg-[#F8F4EE] object-contain"
               />
 
               <div>
@@ -141,7 +141,7 @@ const ProductsTable = ({ products, showActions = true }) => {
             </div>
 
             <div className="mt-3 flex justify-between text-sm">
-              <p>₦{product.price}</p>
+              <p>₦{Number(product.price).toLocaleString("en-NG")}</p>
 
               {product.stock > 5 ? (
                 <span className="text-green-600 text-xs">

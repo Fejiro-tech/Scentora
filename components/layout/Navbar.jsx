@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Menu, X, Search, Heart, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { useWishlist } from "../../app/context/Wishlist";
@@ -28,7 +28,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             href="/"
-            className="font-['Cormorant_Garamond'] text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] uppercase tracking-[4px] font-semibold"
+            className="font-display text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] uppercase tracking-[4px] font-semibold"
           >
             Scentora
           </Link>

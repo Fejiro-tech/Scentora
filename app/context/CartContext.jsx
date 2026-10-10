@@ -1,64 +1,56 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useSyncExternalStore } from "react";
 import toast from "react-hot-toast";
+import { createLocalStorageStore } from "../../lib/localStorageStore";
 
 export const CartContext = createContext();
+const cartStore = createLocalStorageStore("cart");
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
-
-  useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-    if (storedCart) {
-      setCart(JSON.parse(storedCart));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+  const cart = useSyncExternalStore(
+    cartStore.subscribe,
+    cartStore.getSnapshot,
+    cartStore.getServerSnapshot,
+  );
 
   const addToCart = (product) => {
-    const existing = cart.find((item) => item.id === product.id);
+    cartStore.setSnapshot((currentCart) => {
+      const existing = currentCart.find((item) => item.id === product.id);
 
-    if (existing) {
-      const updatedCart = cart.map((item) =>
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item,
-      );
-
-      setCart(updatedCart);
-    } else {
-      setCart([...cart, { ...product, quantity: 1 }]);
-    }
+      return existing
+        ? currentCart.map((item) =>
+            item.id === product.id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item,
+          )
+        : [...currentCart, { ...product, quantity: 1 }];
+    });
     toast.success("Added to cart");
   };
 
-  
-
   const removeFromCart = (id) => {
-    const updatedCart = cart.filter((item) => item.id !== id);
-    setCart(updatedCart);
+    cartStore.setSnapshot((currentCart) =>
+      currentCart.filter((item) => item.id !== id),
+    );
   };
 
   const increaseQty = (id) => {
-    const updatedCart = cart.map((item) =>
-      item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+    cartStore.setSnapshot((currentCart) =>
+      currentCart.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+      ),
     );
-
-    setCart(updatedCart);
   };
 
   const decreaseQty = (id) => {
-    const updatedCart = cart
-      .map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
-      )
-      .filter((item) => item.quantity > 0);
-
-    setCart(updatedCart);
+    cartStore.setSnapshot((currentCart) =>
+      currentCart
+        .map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
+        )
+        .filter((item) => item.quantity > 0),
+    );
   };
 
   const cartCount = cart.reduce(
@@ -71,7 +63,7 @@ export const CartProvider = ({ children }) => {
   );
 
   const clearCart = () => {
-    setCart([]);
+    cartStore.setSnapshot([]);
   };
 
   return (

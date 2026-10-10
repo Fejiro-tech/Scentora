@@ -5,6 +5,13 @@ import { mapProductFromDB, mapProductToDB } from "../utils/productMapper";
 
 export const ProductContext = createContext();
 
+const loadProducts = async () => {
+  const res = await fetch("/api/products");
+  const data = await res.json();
+
+  return data.map(mapProductFromDB);
+};
+
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -12,11 +19,7 @@ export const ProductProvider = ({ children }) => {
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch("/api/products");
-      const data = await res.json();
-
-      const formattedProuducts = data.map(mapProductFromDB);
-      setProducts(formattedProuducts);
+      setProducts(await loadProducts());
     } catch (error) {
       console.error("Failed to fetch products:", error);
     }
@@ -105,7 +108,19 @@ export const ProductProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchProducts();
+    let cancelled = false;
+
+    loadProducts()
+      .then((loadedProducts) => {
+        if (!cancelled) setProducts(loadedProducts);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch products:", error);
+      });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (

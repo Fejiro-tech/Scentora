@@ -27,94 +27,51 @@ const categories = [
 ];
 
 const CategorySection = () => {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 25 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
-
   return (
     <motion.section
-      initial="hidden"
-      whileInView="show"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      variants={container}
-      className="w-full max-w-7xl mx-auto bg-[#140909] px-10 py-20"
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="w-full bg-[#0f0a0a] px-6 py-20 text-[#F7F3EE] sm:px-8 md:py-28"
     >
-      <div className="text-center font-['Cormorant_Garamond']">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-10 max-w-xl md:mb-14">
+          <p className="mb-3 text-[10px] font-semibold uppercase tracking-[4px] text-[rgba(160,119,66,0.9)] md:text-xs">
+            Explore the collection
+          </p>
 
-        {/* HEADER */}
-        <motion.h1
-          variants={item}
-          className="text-[rgba(200,160,100,0.8)] font-bold text-[10px] md:text-[12px] tracking-[4px] uppercase mb-2"
-        >
-          Explore Categories
-        </motion.h1>
+          <h2 className="font-display text-3xl font-medium leading-tight sm:text-4xl md:text-5xl">
+            Find your{" "}
+            <span className="italic text-[#A77E4D]">signature</span>{" "}
+            scent
+          </h2>
 
-        <motion.p
-          variants={item}
-          className="font-bold text-lg md:text-2xl tracking-[4px]"
-        >
-          Find your{" "}
-          <span className="text-[rgba(220,185,145,0.95)] italic">
-            Perfect
-          </span>{" "}
-          Scent
-        </motion.p>
+          <p className="mt-4 max-w-lg text-sm leading-relaxed text-[#C7BDB2] md:text-base">
+            Discover fragrance families, each with its own character and
+            presence.
+          </p>
+        </div>
 
-        <motion.p
-          variants={item}
-          className="mb-12 text-[rgba(220,185,145,0.95)] text-sm md:text-base"
-        >
-          Every fragrance tells a story. Explore our scent families and discover
-          the one that truly defines you.
-        </motion.p>
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
+          <CategoryCard
+            image={categories[0].image}
+            category={categories[0].category}
+            description={categories[0].description}
+            featured
+          />
 
-        {/* MOBILE SCROLL */}
-        <motion.div variants={container} className="w-full">
-          <div className="flex gap-5 overflow-x-auto scrollbar-hide lg:hidden px-2">
-            {categories.map((itemData, idx) => (
-              <motion.div
-                key={idx}
-                variants={item}
-                className="min-w-[60%] sm:min-w-[50%] md:min-w-[45%] flex-shrink-0 rounded-2xl"
-              >
-                <CategoryCard
-                  image={itemData.image}
-                  category={itemData.category}
-                  description={itemData.description}
-                />
-              </motion.div>
+          <div className="flex flex-col divide-y divide-[#514237]">
+            {categories.slice(1).map((itemData) => (
+              <CategoryCard
+                key={itemData.category}
+                image={itemData.image}
+                category={itemData.category}
+                description={itemData.description}
+              />
             ))}
           </div>
-
-          {/* DESKTOP GRID */}
-          <div className="hidden lg:grid grid-cols-4 gap-6">
-            {categories.map((itemData, idx) => (
-              <motion.div key={idx} variants={item}>
-                <CategoryCard
-                  image={itemData.image}
-                  category={itemData.category}
-                  description={itemData.description}
-                />
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
+        </div>
       </div>
     </motion.section>
   );

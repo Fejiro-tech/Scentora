@@ -1,40 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { X } from "lucide-react";
 import Image from "next/image";
 
+const getInitialForm = (product) => ({
+  id: product?.id || "",
+  name: product?.name || "",
+  category: product?.category || "",
+  price: product?.price || "",
+  stock: product?.stock || "",
+  description: product?.description || "",
+  date: product?.date || "",
+  image: product?.image || null,
+});
+
 export default function EditModal({ onClose, selectedProduct, editProduct }) {
-  const [form, setForm] = useState({
-    id: "",
-    name: "",
-    category: "",
-    price: "",
-    stock: "",
-    description: "",
-    date: "",
-    image: null,
-  });
-
-  const [preview, setPreview] = useState("");
-
-  // PREFILL FORM
-  useEffect(() => {
-    if (selectedProduct) {
-      setForm({
-        id: selectedProduct.id,
-        name: selectedProduct.name || "",
-        category: selectedProduct.category || "",
-        price: selectedProduct.price || "",
-        stock: selectedProduct.stock || "",
-        description: selectedProduct.description || "",
-        date: selectedProduct.date || "",
-        image: selectedProduct.image || null,
-      });
-
-      setPreview(selectedProduct.image?.src || selectedProduct.image || "");
-    }
-  }, [selectedProduct]);
+  const [form, setForm] = useState(() => getInitialForm(selectedProduct));
+  const [preview, setPreview] = useState(
+    () => selectedProduct?.image?.src || selectedProduct?.image || "",
+  );
 
   const handleChange = (e) => {
     setForm((prev) => ({
@@ -106,7 +91,7 @@ export default function EditModal({ onClose, selectedProduct, editProduct }) {
                   alt="preview"
                   width={300}
                   height={300}
-                  className="w-24 h-24 md:w-44 md:h-44 object-cover"
+                  className="w-24 h-24 md:w-44 md:h-44 object-contain"
                 />
               ) : (
                 <>

@@ -49,7 +49,7 @@ const FeaturedSections = () => {
 
         <motion.h1
           variants={item}
-          className="text-[#1A1A1A] font-bold text-lg md:text-2xl tracking-[4px] font-['Cormorant_Garamond']"
+          className="font-display text-[#1A1A1A] font-bold text-lg md:text-2xl tracking-[4px]"
         >
           Featured Fragances
         </motion.h1>

@@ -16,7 +16,7 @@ const SideBar = () => {
 
 
   return (
-    <aside className="w-54 md:w-52 lg:w-64 h-screen bg-[#111111] border-r border-[#166534] flex flex-col py-4 font-['Cormorant_Garamond']">
+    <aside className="w-54 md:w-52 lg:w-64 h-screen bg-[#111111] border-r border-[rgba(200,160,100,0.45)] flex flex-col py-4">
       <nav className="">
         <ul className="flex flex-col space-y-8 text-lg">
           {navlinks.map((item, idx) => (

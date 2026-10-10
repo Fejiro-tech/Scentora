@@ -14,7 +14,7 @@ const WishlistPage = () => {
 
         {/* HEADER */}
         <div className="text-center mb-12">
-          <h1 className="text-2xl md:text-4xl font-bold font-['Cormorant_Garamond'] tracking-[3px] text-[#1A1A1A]">
+          <h1 className="font-display text-2xl md:text-4xl font-bold tracking-[3px] text-[#1A1A1A]">
             My Wishlist
           </h1>
           <p className="text-gray-600 text-sm mt-2">
@@ -42,7 +42,7 @@ const WishlistPage = () => {
             {wishlist.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-2xl overflow-hidden border border-[#E8DED1] hover:shadow-lg transition group"
+                className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#E8DED1] bg-white transition hover:shadow-lg group"
               >
 
                 {/* IMAGE */}
@@ -59,10 +59,10 @@ const WishlistPage = () => {
                 </Link>
 
                 {/* CONTENT */}
-                <div className="p-4">
+                <div className="flex flex-1 flex-col p-4">
 
                   <Link href={`/store/perfume/${item.slug}`}>
-                    <h2 className="text-sm uppercase tracking-[2px] font-medium text-[#1E1E1E]">
+                    <h2 className="font-display line-clamp-2 min-h-10 text-sm uppercase tracking-[2px] font-medium text-[#1E1E1E]">
                       {item.name}
                     </h2>
                   </Link>
@@ -72,13 +72,13 @@ const WishlistPage = () => {
                   </p>
 
                   <p className="text-[rgba(200,160,100,0.95)] font-semibold text-sm mt-2">
-                    ₦{item.price}
+                    ₦{Number(item.price).toLocaleString("en-NG")}
                   </p>
 
                   {/* ACTIONS */}
                   <button
                     onClick={() => removeFromWishlist(item.id)}
-                    className="mt-4 w-full py-2 rounded-full text-sm border border-red-200 text-red-500 hover:bg-red-50 transition"
+                    className="mt-auto w-full rounded-full border border-red-200 py-2 text-sm text-red-500 transition hover:bg-red-50"
                   >
                     Remove
                   </button>

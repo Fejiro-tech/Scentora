@@ -9,7 +9,7 @@ const FeaturedCard = ({ product }) => {
   if (!product) return null;
 
   return (
-    <div className="bg-white rounded-2xl overflow-hidden border border-[#E8DED1] hover:shadow-xl transition duration-300 group">
+    <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#E8DED1] bg-white transition duration-300 hover:shadow-xl group">
 
       {/* Image */}
       <Link href={`/store/perfume/${product.slug}`}>
@@ -29,18 +29,18 @@ const FeaturedCard = ({ product }) => {
       </Link>
 
       {/* Content */}
-      <div className="p-5">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <h3 className="text-sm uppercase tracking-[2px] text-[#1E1E1E] font-medium">
-              {product.name}
-            </h3>
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="font-display line-clamp-2 min-h-10 text-sm uppercase tracking-[2px] text-[#1E1E1E] font-medium">
+          {product.name}
+        </h3>
 
-            <p className="text-xs text-gray-500 mt-1 capitalize text-left">
-              {product.category}
-            </p>
-          </div>
-        </div>
+        <p className="text-xs text-gray-500 mt-1 capitalize text-left">
+          {product.category}
+        </p>
+
+        <p className="mt-auto pt-2 text-sm font-semibold text-[rgba(200,160,100,0.95)]">
+          ₦{Number(product.price).toLocaleString("en-NG")}
+        </p>
       </div>
     </div>
   );

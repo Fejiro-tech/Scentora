@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 const BestSeller = () => {
   const { products } = useProduct();
 
-  // 🔥 SAFE fallback (prevents blank UI)
+  //  SAFE fallback (prevents blank UI)
   const bestSellers = (products ?? [])
     .filter((p) => p.isBestSeller === true)
     .slice(0, 6);
@@ -31,7 +31,7 @@ const BestSeller = () => {
     });
   };
 
-  // ONLY TEXT ANIMATION (cleaner)
+  // ONLY TEXT ANIMATION 
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -62,13 +62,13 @@ const BestSeller = () => {
       {/* HEADER */}
       <motion.div
         variants={fadeUp}
-        className="text-center mb-10 font-['Cormorant_Garamond'] pt-12"
+        className="text-center mb-10 pt-12"
       >
         <p className="text-[rgba(200,160,100,0.8)] uppercase text-[10px] tracking-[4px]">
           Customer Favorites
         </p>
 
-        <h2 className="text-[#f5e6d3] text-2xl md:text-3xl font-bold tracking-[4px]">
+        <h2 className="font-display text-[#f5e6d3] text-2xl md:text-3xl font-bold tracking-[4px]">
           Best Sellers
         </h2>
 
@@ -107,7 +107,7 @@ const BestSeller = () => {
           >
             <Link
               href={`/store/perfume/${product.slug}`}
-              className="block bg-[#1a1212] border border-[#3a2a3a] rounded-2xl p-5 hover:scale-[1.02] transition"
+              className="flex h-full flex-col rounded-2xl border border-[#3a2a3a] bg-[#1a1212] p-5 transition hover:scale-[1.02]"
             >
               <div className="relative h-60 flex items-center justify-center bg-[#120c0c] rounded-xl">
                 <Image
@@ -123,8 +123,8 @@ const BestSeller = () => {
                 </span>
               </div>
 
-              <div className="mt-4 text-left">
-                <h3 className="text-[#f5e6d3] uppercase tracking-[2px] text-sm">
+              <div className="mt-auto pt-4 text-left">
+                <h3 className="font-display line-clamp-2 min-h-10 text-[#f5e6d3] uppercase tracking-[2px] text-sm">
                   {product.name}
                 </h3>
 
@@ -133,7 +133,7 @@ const BestSeller = () => {
                 </p>
 
                 <p className="text-[#c8a064] font-semibold mt-2">
-                  ₦{product.price}
+                  ₦{Number(product.price).toLocaleString("en-NG")}
                 </p>
               </div>
             </Link>

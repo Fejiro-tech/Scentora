@@ -31,7 +31,7 @@ const PerfumeCard = ({ product }) => {
   };
 
   return (
-    <div className="bg-white rounded-2xl overflow-hidden border border-[#E8DED1] hover:shadow-xl transition duration-300 group">
+    <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#E8DED1] bg-white transition duration-300 hover:shadow-xl group">
 
       {/* IMAGE */}
       <Link href={`/store/perfume/${product.slug}`}>
@@ -67,12 +67,12 @@ const PerfumeCard = ({ product }) => {
       </Link>
 
       {/* CONTENT */}
-      <div className="p-5">
+      <div className="flex flex-1 flex-col p-5">
 
         <div className="flex items-start justify-between gap-4">
 
           <div>
-            <h3 className="text-sm uppercase text-left tracking-[2px] text-[#1E1E1E] font-medium">
+            <h3 className="font-display line-clamp-2 min-h-10 text-sm uppercase text-left tracking-[2px] text-[#1E1E1E] font-medium">
               {product.name}
             </h3>
 
@@ -82,10 +82,10 @@ const PerfumeCard = ({ product }) => {
           </div>
 
           {/* PRICE + HEART */}
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2">
 
-            <p className="text-[rgba(200,160,100,0.95)] font-semibold text-sm">
-              ₦{product.price}
+            <p className="whitespace-nowrap text-[rgba(200,160,100,0.95)] font-semibold text-sm">
+              ₦{Number(product.price).toLocaleString("en-NG")}
             </p>
 
             <motion.button
@@ -110,7 +110,7 @@ const PerfumeCard = ({ product }) => {
         <button
           onClick={() => addToCart(product)}
           disabled={product.stock <= 0}
-          className={`w-full mt-6 py-3 rounded-full transition duration-300 ${
+          className={`mt-auto w-full py-3 rounded-full transition duration-300 ${
             product.stock <= 0
               ? "bg-gray-200 text-gray-500 cursor-not-allowed"
               : "bg-black text-[#D4A76A] hover:opacity-90"

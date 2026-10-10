@@ -1,5 +1,6 @@
 import { useCart } from "../app/context/CartContext";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Cart() {
 
@@ -11,7 +12,7 @@ export default function Cart() {
 
         {/* Header */}
         <div className="mb-10 ">
-          <h1 className="text-lg md:text-xl font-semibold font-['Cormorant_Garamond'] tracking-wide">
+          <h1 className="font-display text-lg md:text-xl font-semibold tracking-wide">
             Shopping Cart
           </h1>
 
@@ -29,11 +30,13 @@ export default function Cart() {
                 className="bg-[#140909] border border-white/10 rounded-3xl p-3 md:p-5 flex flex-col md:flex-row gap-3 md:gap-5"
               >
                 {/* IMAGE */}
-                <div className="w-14 h-14 md:w-24 md:h-24 rounded-xl overflow-hidden bg-black/20 flex items-center justify-center">
-                  <img
+                <div className="relative w-14 h-14 md:w-24 md:h-24 rounded-xl overflow-hidden bg-black/20">
+                  <Image
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-full object-contain p-1 "
+                    fill
+                    sizes="(min-width: 768px) 96px, 56px"
+                    className="object-contain p-1"
                   />
                 </div>
 
@@ -41,7 +44,7 @@ export default function Cart() {
                 <div className="flex-1 flex flex-col justify-between text-white">
                   <div className="flex items-start justify-between gap-4 text-left">
                     <div>
-                      <h2 className="text-base md:text-xl font-['Cormorant_Garamond'] font-medium">{item.name}</h2>
+                      <h2 className="font-display text-base md:text-xl font-medium">{item.name}</h2>
 
                       <p className="text-white/50 mt-1 text-sm">
                         Scent family: {item.category}
@@ -49,7 +52,7 @@ export default function Cart() {
                     </div>
 
                     <p className="text-base md:text-lg font-medium whitespace-nowrap">
-                      ₦{(item.price || 0).toLocaleString()}
+                      ₦{Number(item.price || 0).toLocaleString("en-NG")}
                     </p>
                   </div>
 
@@ -87,12 +90,12 @@ export default function Cart() {
 
           {/* SUMMARY */}
           <div className="bg-[#140909] border border-white/10 rounded-3xl p-6 h-fit sticky top-24 text-white text-sm md:text-base">
-            <h2 className="text-lg md:text-xl font-semibold mb-6 font-['Cormorant_Garamond']">Order Summary</h2>
+            <h2 className="font-display text-lg md:text-xl font-semibold mb-6">Order Summary</h2>
 
             <div className="space-y-4 text-white/70">
               <div className="flex items-center justify-between ">
                 <p>Subtotal</p>
-                <p>₦{(cartTotal || 0).toLocaleString()}</p>
+                <p>₦{(cartTotal || 0).toLocaleString("en-NG")}</p>
               </div>
 
               <div className="flex items-center justify-between ">
@@ -102,7 +105,7 @@ export default function Cart() {
 
               <div className="border-t border-white/10 pt-4 flex items-center justify-between text-white text-base md:text-lg font-medium">
                 <p>Total</p>
-                <p>₦{(cartTotal || 0).toLocaleString()}</p>
+                <p>₦{(cartTotal || 0).toLocaleString("en-NG")}</p>
               </div>
             </div>
 

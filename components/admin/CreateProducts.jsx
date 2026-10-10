@@ -1,11 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 
 export default function CreateProductPage({
   formData,
-  setFormData,
   handleChange,
   handleSubmit,
   handleImageChange,
@@ -127,7 +125,7 @@ export default function CreateProductPage({
                 alt="preview"
                 width={20}
                 height={30}
-                className="w-44 h-40 object-cover"
+                className="w-44 h-40 object-contain"
               />
             ) : (
               <>

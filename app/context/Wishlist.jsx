@@ -1,28 +1,21 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useSyncExternalStore } from "react";
 import toast from "react-hot-toast";
+import { createLocalStorageStore } from "../../lib/localStorageStore";
 
 const WishlistContext = createContext();
+const wishlistStore = createLocalStorageStore("wishlist");
 
 export const WishlistProvider = ({ children }) => {
-  const [wishlist, setWishlist] = useState([]);
-
-  // load from localStorage
-  useEffect(() => {
-    const stored = localStorage.getItem("wishlist");
-    if (stored) {
-      setWishlist(JSON.parse(stored));
-    }
-  }, []);
-
-  // save to localStorage
-  useEffect(() => {
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  }, [wishlist]);
+  const wishlist = useSyncExternalStore(
+    wishlistStore.subscribe,
+    wishlistStore.getSnapshot,
+    wishlistStore.getServerSnapshot,
+  );
 
   const addToWishlist = (product) => {
-    setWishlist((prev) => {
+    wishlistStore.setSnapshot((prev) => {
       const exists = prev.find((item) => item.id === product.id);
       if (exists) return prev;
       return [...prev, product];
@@ -31,7 +24,7 @@ export const WishlistProvider = ({ children }) => {
   };
 
   const removeFromWishlist = (id) => {
-    setWishlist((prev) => prev.filter((item) => item.id !== id));
+    wishlistStore.setSnapshot((prev) => prev.filter((item) => item.id !== id));
   };
 
   return (

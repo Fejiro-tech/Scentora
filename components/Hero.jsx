@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
@@ -30,7 +31,7 @@ const Hero = () => {
   }, [backgrounds.length]);
 
   return (
-    <section className="relative overflow-hidden min-h-[80vh] bg-black font-['Montserrat'] ">
+    <section className="relative overflow-hidden min-h-[80vh] bg-black">
 
       {/* BACKGROUND SLIDER */}
       <AnimatePresence mode="sync">
@@ -71,7 +72,7 @@ const Hero = () => {
       <div className="hidden lg:block absolute left-[38%] inset-y-0 w-px bg-linear-to-b from-transparent via-[rgba(200,160,100,0.21)] to-transparent" />
 
       {/* Vertical text */}
-      <span className="hidden lg:block absolute top-50  lg:right-8 z-20 rotate-180 [writing-mode:vertical-rl] text-[10px] tracking-[3px] italic text-[rgba(218,169,97,0.45)] font-['Cormorant_Garamond']">
+      <span className="font-display hidden lg:block absolute top-50  lg:right-8 z-20 rotate-180 [writing-mode:vertical-rl] text-[10px] tracking-[3px] italic text-[rgba(218,169,97,0.45)]">
         Maison de Parfum
       </span>
 
@@ -100,7 +101,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="font-['Cormorant_Garamond'] text-[42px] sm:text-[54px] md:text-[64px] lg:text-[72px] leading-[1.05] font-light text-[#f8f4ef]"
+            className="font-display text-[42px] sm:text-[54px] md:text-[64px] lg:text-[72px] leading-[1.05] font-light text-[#f8f4ef]"
           >
             Scents that{" "}
             <em className="italic text-[rgba(220,185,145,0.95)]">
@@ -129,9 +130,11 @@ const Hero = () => {
             <Link href="/store" className="group inline-flex items-center gap-3 border border-[rgba(200,160,100,0.45)] px-6 sm:px-7 py-4 text-[10px] tracking-[4px] uppercase font-semibold text-[#f5efe8] hover:bg-[rgba(200,160,100,0.08)] transition-all">
               Find Your Scent
 
-              <img
+              <Image
                 src="/arrow.svg"
                 alt="arrow"
+                width={16}
+                height={16}
                 className="w-4 h-4 group-hover:translate-x-1 transition-transform"
               />
             </Link>

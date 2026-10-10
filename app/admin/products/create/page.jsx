@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { uploadImage } from "../../../../lib/uploadImage";
 
 const Page = () => {
-  const { setProducts, fetchProducts } = useProduct();
+  const { fetchProducts } = useProduct();
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -75,7 +75,7 @@ const Page = () => {
       image: imageUrl,
     };
 
-    const res = await fetch("/api/products", {
+    await fetch("/api/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

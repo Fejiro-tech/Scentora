@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { useCart } from "../app/context/CartContext";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -24,23 +25,26 @@ const PerfumeDetail = ({ product }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-white rounded-2xl shadow-lg overflow-hidden">
           {/* Image Section */}
           <div className="bg-[#f1ece6] flex items-center justify-center p-10">
-            <img
+            <Image
               src={product.image}
               alt={product.name}
-              className="w-full max-w-xs object-contain drop-shadow-lg"
+              width={500}
+              height={600}
+              sizes="(min-width: 768px) 40vw, 80vw"
+              className="w-full max-w-xs max-h-[28rem] object-contain drop-shadow-lg"
             />
           </div>
 
           {/* Details Section */}
           <div className="p-6 md:p-10 flex flex-col justify-center">
-            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">{product.name}</h1>
+            <h1 className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">{product.name}</h1>
 
             <p className="text-sm text-gray-500 mt-1 capitalize">
               {product.category}
             </p>
 
             <p className="text-lg md:text-xl lg:text-2xl font-semibold text-black mt-4 md:mt-6">
-              ₦{product.price}
+              ₦{Number(product.price).toLocaleString("en-NG")}
             </p>
 
             <p className="text-gray-600 text-sm md:text-base mt-4 md:mt-6 leading-relaxed">

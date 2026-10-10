@@ -4,7 +4,7 @@ import Cart from '../../../../components/Cart'
 import { ArrowLeft } from 'lucide-react'
 import { useRouter } from 'next/navigation';
 
-const page = () => {
+const CartPage = () => {
    const router = useRouter();
   return (
     <div className='min-h-screen bg-[#F7F3EE] px-6 py-10 md:py-20'>
@@ -23,4 +23,4 @@ const page = () => {
   )
 }
 
-export default page
+export default CartPage

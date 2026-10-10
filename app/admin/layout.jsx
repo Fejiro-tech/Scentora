@@ -39,12 +39,12 @@ export default function AdminLayout({ children }) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-yellow-500 tracking-[0.3em]">
+          <h1 className="font-display text-3xl font-bold text-[#c8a064] tracking-[0.3em]">
             PERFUME
           </h1>
 
           <div className="mt-6 flex justify-center">
-            <div className="h-10 w-10 rounded-full border-4 border-yellow-500/20 border-t-yellow-500 animate-spin"></div>
+            <div className="h-10 w-10 rounded-full border-4 border-[#c8a064]/20 border-t-[#c8a064] animate-spin"></div>
           </div>
 
           <p className="mt-4 text-gray-400 text-sm">
@@ -73,7 +73,7 @@ export default function AdminLayout({ children }) {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="block md:hidden text-[#166534]"
+              className="block md:hidden text-[#c8a064]"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -100,7 +100,7 @@ export default function AdminLayout({ children }) {
             className="fixed inset-0 top-20 right-0 bg-black/50 backdrop-blur-sm z-40"
           />
 
-          <div className="fixed top-20 right-0 w-64 h-screen bg-white border-l border-[#111111] z-50 font-['Cormorant_Garamond']">
+          <div className="fixed top-20 right-0 w-64 h-screen bg-white border-l border-[#111111] z-50">
             <nav className="mt-6">
               <ul className="flex flex-col">
                 {navlinks.map((item, idx) => (

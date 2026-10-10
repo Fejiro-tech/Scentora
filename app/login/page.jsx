@@ -34,11 +34,11 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-black px-6">
-      <div className="relative w-full max-w-md p-8 rounded-2xl border border-yellow-500/30 bg-zinc-950 shadow-[0_0_40px_rgba(234,179,8,0.15)] font-['Cormorant_Garamond']">
+      <div className="relative w-full max-w-md p-8 rounded-2xl border border-[rgba(200,160,100,0.3)] bg-zinc-950 shadow-[0_0_40px_rgba(200,160,100,0.15)]">
 
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold tracking-[0.4em] text-[#c8a064] uppercase">
+          <h1 className="font-display text-3xl font-bold tracking-[0.4em] text-[#c8a064] uppercase">
             SCENTORA
           </h1>
           <p className="text-sm text-gray-400 mt-2">
@@ -54,7 +54,7 @@ export default function LoginPage() {
             placeholder="Email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-3 rounded-xl bg-black border border-yellow-500/30 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c8a064]"
+            className="w-full px-4 py-3 rounded-xl bg-black border border-[rgba(200,160,100,0.3)] text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c8a064]"
           />
 
           {/* Password with eye */}
@@ -64,7 +64,7 @@ export default function LoginPage() {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 pr-12 rounded-xl bg-black border border-yellow-500/30 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c8a064]"
+              className="w-full px-4 py-3 pr-12 rounded-xl bg-black border border-[rgba(200,160,100,0.3)] text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c8a064]"
             />
 
             <button
