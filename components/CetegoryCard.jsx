@@ -11,7 +11,7 @@ const CategoryCard = ({ image, category, description, featured = false }) => {
     return (
       <Link
         href={href}
-        className="group relative isolate flex min-h-90 overflow-hidden rounded-sm bg-[#F8F4EE] sm:min-h-[440px] lg:min-h-[520px]"
+        className="group relative isolate flex min-h-90 overflow-hidden rounded-sm bg-[#F8F4EE] sm:min-h-110 lg:min-h-130"
       >
         <Image
           src={image}

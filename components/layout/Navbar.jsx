@@ -22,8 +22,9 @@ const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [activeResult, setActiveResult] = useState(0);
-  const { products, isLoadingProducts, productsError, fetchProducts } =
-    useProduct();
+
+  const { products, isLoadingProducts, productsError, fetchProducts } = useProduct();
+
   const { wishlist } = useWishlist();
   const { cart, cartCount } = useCart();
   const router = useRouter();
@@ -200,7 +201,7 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0, height: "auto" }}
               exit={{ opacity: 0, y: -8, height: 0 }}
               transition={{ duration: 0.22, ease: "easeOut" }}
-              className="absolute left-0 right-0 top-full z-[60] overflow-hidden border-b border-[rgba(200,160,100,0.35)] bg-[#100d0c]/[0.98] shadow-2xl backdrop-blur-xl"
+              className="absolute left-0 right-0 top-full z-60 overflow-hidden border-b border-[rgba(200,160,100,0.35)] bg-[#100d0c]/98 shadow-2xl backdrop-blur-xl"
             >
               <div className="mx-auto max-h-[min(70vh,36rem)] max-w-3xl overflow-y-auto px-5 py-5 sm:px-8 sm:py-7">
                 <div className="mb-4 flex items-center justify-between gap-4">
@@ -250,7 +251,7 @@ const Navbar = () => {
                         ? `navbar-search-result-${matchingProducts[activeResult].id}`
                         : undefined
                     }
-                    className="min-w-0 flex-1 bg-transparent py-1 text-base text-[#F8F4EF] placeholder:text-[#8f8377] focus:outline-none sm:text-lg"
+                    className="min-w-0 flex-1 bg-transparent py-1 text-base text-[#F8F4EF] placeholder:text-[#8f8377] focus:outline-none sm:text-lg [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none [&::-ms-clear]:hidden"
                   />
                   {searchTerm && (
                     <button
@@ -325,7 +326,7 @@ const Navbar = () => {
                             className={`flex items-center gap-4 px-2 py-3 transition-colors ${
                               index === activeResult
                                 ? "bg-white/[0.07]"
-                                : "hover:bg-white/[0.04]"
+                                : "hover:bg-white/4"
                             }`}
                           >
                             <span className="relative flex size-14 shrink-0 items-center justify-center overflow-hidden bg-[#1b1613] sm:size-16">
@@ -364,9 +365,6 @@ const Navbar = () => {
                       ))}
                   </ul>
                 </div>
-                <p className="mt-3 hidden text-right text-[10px] text-[#8f8377] sm:block">
-                  Use ↑ and ↓ to browse, Enter to open, Esc to close
-                </p>
               </div>
             </motion.section>
           )}
