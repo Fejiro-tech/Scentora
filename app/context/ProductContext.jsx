@@ -9,19 +9,32 @@ const loadProducts = async () => {
   const res = await fetch("/api/products");
   const data = await res.json();
 
+  if (!res.ok) {
+    throw new Error(data.error || "Unable to load products.");
+  }
+
   return data.map(mapProductFromDB);
 };
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
+  const [isLoadingProducts, setIsLoadingProducts] = useState(true);
+  const [productsError, setProductsError] = useState("");
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const fetchProducts = async () => {
+    setIsLoadingProducts(true);
+    setProductsError("");
     try {
       setProducts(await loadProducts());
     } catch (error) {
       console.error("Failed to fetch products:", error);
+      setProductsError(
+        error instanceof Error ? error.message : "Unable to load products.",
+      );
+    } finally {
+      setIsLoadingProducts(false);
     }
   };
 
@@ -112,10 +125,21 @@ export const ProductProvider = ({ children }) => {
 
     loadProducts()
       .then((loadedProducts) => {
-        if (!cancelled) setProducts(loadedProducts);
+        if (!cancelled) {
+          setProducts(loadedProducts);
+          setProductsError("");
+        }
       })
       .catch((error) => {
         console.error("Failed to fetch products:", error);
+        if (!cancelled) {
+          setProductsError(
+            error instanceof Error ? error.message : "Unable to load products.",
+          );
+        }
+      })
+      .finally(() => {
+        if (!cancelled) setIsLoadingProducts(false);
       });
 
     return () => {
@@ -127,6 +151,8 @@ export const ProductProvider = ({ children }) => {
     <ProductContext.Provider
       value={{
         products,
+        isLoadingProducts,
+        productsError,
         setProducts,
         deleteProduct,
         editProduct,

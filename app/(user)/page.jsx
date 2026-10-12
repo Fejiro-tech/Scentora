@@ -5,6 +5,8 @@ import FeaturedSections from "../../components/FeaturedSections";
 import CategorySection from "../../components/CategorySection";
 import About from "../../components/About";
 import BestSeller from "../../components/BestSeller";
+import Testimonials from "../../components/Testimonials";
+import FAQ from "../../components/FAQ";
 
 export default function Home() {
   console.log("HOME RENDER");
@@ -23,6 +25,8 @@ export default function Home() {
       <FeaturedSections />
       <CategorySection />
       <About />
+      <Testimonials />
+      <FAQ />
     </div>
   );
 }
