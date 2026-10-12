@@ -1,10 +1,12 @@
 import AnouncementBar from "../../components/layout/AnouncementBar";
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
+import PwaInstallBanner from "../../components/PwaInstallBanner";
 
 export default function UserLayout({ children }) {
   return (
     <div className="min-h-screen flex flex-col">
+      <PwaInstallBanner />
       <header className="fixed top-0 left-0 w-full z-50">
         <AnouncementBar
           items={["Free Delivery above ₦80,000", "New Arrivals", "Luxury Perfumes"]}
