@@ -1,0 +1,41 @@
+name: Supabase activity check
+
+on:
+  schedule:
+    - cron: "17 */8 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  database-activity:
+    name: Read-only database activity
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Query the existing Supabase health endpoint
+        env:
+          SITE_URL: ${{ vars.SCENTORA_SITE_URL }}
+        run: |
+          set -euo pipefail
+
+          if [[ ! "$SITE_URL" =~ ^https://[A-Za-z0-9.-]+$ ]]; then
+            echo "::error::Set the SCENTORA_SITE_URL Actions variable to the deployed HTTPS site origin."
+            exit 1
+          fi
+
+          status="$(curl \
+            --silent \
+            --show-error \
+            --output /dev/null \
+            --write-out '%{http_code}' \
+            --max-time 20 \
+            "${SITE_URL%/}/api/keep-alive")"
+
+          if [[ "$status" != "200" ]]; then
+            echo "::error::The read-only Supabase activity request returned HTTP $status."
+            exit 1
+          fi
+
+          echo "Read-only Supabase activity request succeeded (HTTP $status)."
